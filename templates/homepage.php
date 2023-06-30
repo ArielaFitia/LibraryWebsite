@@ -8,13 +8,16 @@
 </head>
 
 <body>
-    <h1>Les livres</h1><br>
+    <button>Comment s'inscrire ?!</button>
+    <a href="templates/login.php" target="_blank">Se connecter</a>
+    <h1>Les livres recents</h1><br>
     <?php foreach ($books as $book) { ?>
-        <h3><?= $book['title']; ?></h3>
-        <h2><?= $book['author']; ?></h2>
-        <p><?= $book['synopsis']; ?></p>
+        <h3><?= $book['title'] ?></h3>
+        <h2><?= $book['author'] ?></h2>
+        <p><?= $book['synopsis'] ?></p>
         <br>
     <?php } ?>
+    <a href="homepage_books.php">Voir plus</a>
 </body>
 
 </html>
