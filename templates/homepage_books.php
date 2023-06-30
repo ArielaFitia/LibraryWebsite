@@ -1,16 +1,15 @@
-<?php $title = 'Accueil'; ?>
+<?php $title = 'Accueil-Les livres'; ?>
 
 <?php ob_start(); ?>
 
-<h1>Les livres recents</h1><br>
+<h1>Tous les livres</h1><br>
 <?php foreach ($books as $book) { ?>
     <h3><?= $book['title'] ?></h3>
     <h2><?= $book['author'] ?></h2>
     <p><?= $book['synopsis'] ?></p>
     <br>
 <?php } ?>
-<a href="index.php?action=homepage_books">Voir plus</a>
 
 <?php $content = ob_get_clean(); ?>
 
-<?php require('layout.php'); ?>
+<?php require('layout.php');
