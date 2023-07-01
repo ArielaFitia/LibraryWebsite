@@ -9,10 +9,8 @@
 
 <body>
     <nav>
-        <a href="index.php">Accueil</a>
-        <button>Comment s'inscrire ?!</button>
-        <a href="index.php?action=login">Se connecter</a>
-        <a href="index.php?action=homepage_search">rechercher</a><br>
+        <a href="">rechercher</a><br>
+        <button>profil</button>
     </nav>
 
     <?= $content ?>

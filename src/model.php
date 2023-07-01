@@ -34,26 +34,17 @@ function getAllbooks()
     return $books;
 }
 
-function searchBooks($keyword)
+function searchBook($searchQuery)
 {
     $db = dbConnect();
-    $statement = $db->prepare("SELECT * FROM book WHERE title LIKE :keyword OR author LIKE :keyword");
-    $statement->execute([':keyword' => '%' . $keyword . '%']);
-
-    $books = [];
-
-    while (($row = $statement->fetch())) {
-        $book = [
-            'title' => $row['title'],
-            'author' => $row['author'],
-            'synopsis' => $row['synopsis'],
-            'availability' => $row['availability']
-        ];
-        $books[] = $book;
-    }
-
+    $statement = $db->prepare("SELECT * FROM book WHERE title LIKE :query OR author LIKE :query");
+    $searchParam = "%$searchQuery%";
+    $statement->bindParam(':query', $searchParam);
+    $statement->execute();
+    $books = $statement->fetchAll(PDO::FETCH_ASSOC);
     return $books;
 }
+
 
 
 function addAdmin()
@@ -98,17 +89,14 @@ function login()
                 exit();
             }
         } else {
-            $error = "Identifiants incorrects. Veuillez réessayer.";
+            throw new Exception("Identifiants incorrects. Veuillez réessayer.");
         }
     }
 }
 
 function dbConnect()
 {
-    try {
-        $db = new PDO('mysql:host=localhost;dbname=library_website;charset=utf8', 'root', 'root');
-        return $db;
-    } catch (Exception $e) {
-        die('Erreur : ' . $e->getMessage());
-    }
+
+    $db = new PDO('mysql:host=localhost;dbname=library_website;charset=utf8', 'root', 'root');
+    return $db;
 }

@@ -7,9 +7,7 @@
 
 <body>
     <h2>Connexion</h2>
-    <?php if (isset($error)) : ?>
-        <p><?php echo $error; ?></p>
-    <?php endif; ?>
+
     <form method="post" action="index.php?action=login">
         <label for="email">Adresse email:</label>
         <input type="email" name="email" id="email" required>
