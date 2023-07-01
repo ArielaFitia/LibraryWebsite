@@ -1,6 +1,6 @@
 <?php
 
-require_once('src/model.php');
+require_once('src/model/member.php');
 
 function admin_members()
 {
