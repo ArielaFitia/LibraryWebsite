@@ -9,10 +9,12 @@
 
 <body>
     <nav>
-        <a href="index.php">Accueil</a>
-        <button>Comment s'inscrire ?!</button>
-        <a href="index.php?action=login">Se connecter</a>
-        <a href="">rechercher</a><br>
+        <a href="">Accueil</a>
+        <a href="index.php?action=admin_books">Livres</a>
+        <a href="index.php?action=admin_members">Membres</a>
+        <a href="">Emprunts</a>
+        <a href="">Suggestions</a>
+        <button>Profil</button>
     </nav>
 
     <?= $content ?>
