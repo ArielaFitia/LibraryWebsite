@@ -12,7 +12,8 @@ function getMembers()
         $member = [
             'id' => $row['id'],
             'fullname' => $row['fullname'],
-            'email' => $row['email']
+            'email' => $row['email'],
+            'password' => $row['password']
         ];
         $members[] = $member;
     }
@@ -39,6 +40,7 @@ function addMember()
         $password = $_POST['password'];
         $payment_date = $_POST['payment_date'];
         $expiration_date = $_POST['expiration_date'];
+        $payment_option = $_POST['payment_option'];
 
         // Insertion des données dans la table "user"
         $statement = $db->prepare('INSERT INTO user (fullname, email, password, status) VALUES (?, ?, ?, ?)');
@@ -48,8 +50,8 @@ function addMember()
         $user_id = $db->lastInsertId();
 
         // Insertion des informations de contribution dans la table "contribution"
-        $statement = $db->prepare('INSERT INTO contribution (payment_date, expiration_date, user_id) VALUES (?, ?, ?)');
-        $statement->execute([$payment_date, $expiration_date, $user_id]);
+        $statement = $db->prepare('INSERT INTO contribution (payment_date, expiration_date, payment_option, user_id) VALUES (?, ?, ?, ?)');
+        $statement->execute([$payment_date, $expiration_date, $payment_option, $user_id]);
 
         // Affichage d'un message de succès
         echo "Inscription réussie !";

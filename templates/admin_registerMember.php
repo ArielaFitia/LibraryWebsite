@@ -24,6 +24,13 @@
         <label for="expiration_date">Date d'expiration :</label>
         <input type="date" name="expiration_date" required><br>
 
+        <label for="payment_option">Option de paiement :</label>
+        <select name="payment_option" required>
+            <option value="single">Paiement en une fois</option>
+            <option value="installments">Paiement en deux tranches</option>
+        </select><br>
+
+
         <input type="submit" value="Inscrire">
     </form>
 </body>

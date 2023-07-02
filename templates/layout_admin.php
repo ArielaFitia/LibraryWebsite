@@ -9,7 +9,7 @@
 
 <body>
     <nav>
-        <a href="">Accueil</a>
+        <a href="index.php?action=admin_dashboard">Accueil</a>
         <a href="index.php?action=admin_books">Livres</a>
         <a href="index.php?action=admin_members">Membres</a>
         <a href="">Emprunts</a>
