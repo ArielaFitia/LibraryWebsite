@@ -25,9 +25,11 @@ function getAllbooks()
 
     while (($row = $statement->fetch())) {
         $book = [
+            'id' => $row['id'],
             'title' => $row['title'],
             'author' => $row['author'],
-            'synopsis' => $row['synopsis']
+            'synopsis' => $row['synopsis'],
+            'availability' => $row['availability']
         ];
         $books[] = $book;
     }
@@ -45,6 +47,17 @@ function searchBook($searchQuery)
     return $books;
 }
 
+function updateBook($bookId, $title, $author, $synopsis, $availability)
+{
+    $db = dbConnect();
+    $statement = $db->prepare("UPDATE book SET title = :title, author = :author, synopsis = :synopsis, availability = :availability WHERE id = :bookId");
+    $statement->bindParam(':title', $title);
+    $statement->bindParam(':author', $author);
+    $statement->bindParam(':synopsis', $synopsis);
+    $statement->bindParam(':availability', $availability);
+    $statement->bindParam(':bookId', $bookId);
+    $statement->execute();
+}
 
 
 function addAdmin()

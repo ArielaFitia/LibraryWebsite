@@ -19,6 +19,23 @@ try {
             homepage_search();
         } elseif ($_GET['action'] === 'admin_books') {
             admin_books();
+        } elseif ($_GET['action'] === 'update_book') {
+            if (isset($_GET['id']) && $_GET['id'] > 0) {
+                $identifier = $_GET['id'];
+                if (isset($_POST['title'], $_POST['author'], $_POST['synopsis'], $_POST['availability'])) {
+                    $title = $_POST['title'];
+                    $author = $_POST['author'];
+                    $synopsis = $_POST['synopsis'];
+                    $availability = $_POST['availability'];
+
+                    // Appel à une fonction du modèle pour mettre à jour le livre
+                    updateBook($identifier, $title, $author, $synopsis, $availability);
+
+                    // Redirection vers la page admin_books pour afficher les livres mis à jour
+                    header('Location: index.php?action=admin_books');
+                    exit;
+                }
+            }
         } elseif ($_GET['action'] === 'registerMember') {
             registerMember();
         } elseif ($_GET['action'] === 'registerAdmin') {
