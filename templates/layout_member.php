@@ -9,6 +9,7 @@
 
 <body>
     <nav>
+        <a href="index.php?action=member_dashboard">Accueil</a>
         <a href="">rechercher</a><br>
         <button>profil</button>
     </nav>

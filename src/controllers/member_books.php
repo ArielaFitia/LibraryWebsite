@@ -2,9 +2,9 @@
 
 require_once('src/model.php');
 
-function member_dashboard()
+function member_books()
 {
-    $books = getBooks();
+    $books = getAllbooks();
     $confirmationMessage = '';
 
     if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['loan_book_id'])) {
@@ -17,5 +17,5 @@ function member_dashboard()
         $confirmationMessage = 'L\'emprunt est en attente de confirmation, veuillez vous rendre à notre établissement.';
     }
 
-    require('templates/member_dashboard.php');
+    require('templates/member_books.php');
 }

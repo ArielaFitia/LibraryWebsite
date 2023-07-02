@@ -8,9 +8,11 @@ function getBooks()
 
     while (($row = $statement->fetch())) {
         $book = [
+            'id' => $row['id'],
             'title' => $row['title'],
             'author' => $row['author'],
-            'synopsis' => $row['synopsis']
+            'synopsis' => $row['synopsis'],
+            'availability' => $row['availability']
         ];
         $books[] = $book;
     }
@@ -59,6 +61,23 @@ function updateBook($bookId, $title, $author, $synopsis, $availability)
     $statement->execute();
 }
 
+function createLoan($userId, $bookId)
+{
+    $db = dbConnect();
+    $loanDate = date('Y-m-d');
+    $returnDate = date('Y-m-d', strtotime('+14 days'));
+    $status = 'En attente';
+
+    $statement = $db->prepare("INSERT INTO loan (loan_date, return_date, loan_status, user_id, book_id) VALUES (:loan_date, :return_date, :loan_status, :user_id, :book_id)");
+    $statement->execute([
+        'loan_date' => $loanDate,
+        'return_date' => $returnDate,
+        'loan_status' => $status,
+        'user_id' => $userId,
+        'book_id' => $bookId
+    ]);
+}
+
 
 function addAdmin()
 {
@@ -95,9 +114,11 @@ function login()
         if ($user) {
             // Connexion réussie, rediriger en fonction du statut
             if ($status === 'membre') {
+                $_SESSION['user_id'] = $user['id']; // Ajout de la ligne de la session
                 header('Location: index.php?action=member_dashboard');
                 exit();
             } elseif ($status === 'admin') {
+                $_SESSION['user_id'] = $user['id']; // Ajout de la ligne de la session
                 header('Location: index.php?action=admin_dashboard');
                 exit();
             }

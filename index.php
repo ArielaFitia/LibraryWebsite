@@ -11,6 +11,7 @@ require_once('src/controllers/admin_dahsboard.php');
 require_once('src/controllers/admin_books.php');
 require_once('src/controllers/admin_members.php');
 require_once('src/controllers/member_dashboard.php');
+require_once('src/controllers/member_books.php');
 
 try {
     if (isset($_GET['action']) && $_GET['action'] !== '') {
@@ -54,6 +55,8 @@ try {
             exit;
         } elseif ($_GET['action'] === 'member_dashboard') {
             member_dashboard();
+        } elseif ($_GET['action'] === 'member_books') {
+            member_books();
         } else {
             throw new Exception("Erreur 404 : la page que vous recherchez n'existe pas.");
         }

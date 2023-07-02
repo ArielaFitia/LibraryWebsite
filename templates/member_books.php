@@ -1,4 +1,4 @@
-<?php $title = 'Member_dashboard'; ?>
+<?php $title = 'Member_books'; ?>
 
 <?php ob_start(); ?>
 
@@ -6,7 +6,7 @@
     <p><?= $confirmationMessage ?></p>
 <?php } ?>
 
-<h1>Les livres recents</h1><br>
+<h1>Tous les livres</h1><br>
 
 
 <?php foreach ($books as $book) { ?>
@@ -14,7 +14,7 @@
     <h2><?= $book['author'] ?></h2>
     <p><?= $book['synopsis'] ?></p>
 
-    <form method="POST" action="index.php?action=member_dashboard">
+    <form method="POST" action="index.php?action=member_books">
         <input type="hidden" name="loan_book_id" value="<?= $book['id'] ?>">
         <button type="submit">Emprunter</button>
     </form>
@@ -22,7 +22,6 @@
     <br>
 <?php } ?>
 
-<a href="index.php?action=member_books">Voir plus</a>
 
 <?php $content = ob_get_clean(); ?>
 
