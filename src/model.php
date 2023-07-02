@@ -78,6 +78,13 @@ function createLoan($userId, $bookId)
     ]);
 }
 
+function createSuggestion($message, $userId, $bookId)
+{
+    $db = dbConnect();
+
+    $statement = $db->prepare("INSERT INTO suggestion (message, user_id, book_id) VALUES (:message, :user_id, :book_id)");
+    $statement->execute(['message' => $message, 'user_id' => $userId, 'book_id' => $bookId]);
+}
 
 function addAdmin()
 {

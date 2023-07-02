@@ -19,6 +19,12 @@
         <button type="submit">Emprunter</button>
     </form>
 
+    <form method="POST" action="index.php?action=member_books">
+        <input type="hidden" name="suggestion_book_id" value="<?= $book['id'] ?>">
+        <textarea name="suggestion_message" placeholder="Votre suggestion de changement"></textarea>
+        <button type="submit">Envoyer une suggestion</button>
+    </form>
+
     <br>
 <?php } ?>
 
