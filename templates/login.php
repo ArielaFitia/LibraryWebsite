@@ -9,8 +9,8 @@
     <h2>Connexion</h2>
 
     <form method="post" action="index.php?action=login">
-        <label for="email">Adresse email:</label>
-        <input type="email" name="email" id="email" required>
+        <label for="id">ID:</label>
+        <input type="text" name="id" id="id" required>
         <br>
         <label for="password">Mot de passe:</label>
         <input type="password" name="password" id="password" required>

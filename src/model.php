@@ -83,13 +83,13 @@ function login()
     $db = dbConnect();
     // Traitement du formulaire de connexion
     if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-        $email = $_POST['email'];
+        $id = $_POST['id'];
         $password = $_POST['password'];
         $status = $_POST['status'];
 
         // Vérification des informations de connexion dans la base de données
-        $statement = $db->prepare("SELECT * FROM user WHERE email = :email AND password = :password AND status = :status");
-        $statement->execute(['email' => $email, 'password' => $password, 'status' => $status]);
+        $statement = $db->prepare("SELECT * FROM user WHERE id = :id AND password = :password AND status = :status");
+        $statement->execute(['id' => $id, 'password' => $password, 'status' => $status]);
         $user = $statement->fetch();
 
         if ($user) {
@@ -106,6 +106,7 @@ function login()
         }
     }
 }
+
 
 function dbConnect()
 {
