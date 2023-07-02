@@ -9,6 +9,7 @@ require_once('src/controllers/login.php');
 require_once('src/controllers/admin_dahsboard.php');
 require_once('src/controllers/admin_books.php');
 require_once('src/controllers/admin_members.php');
+require_once('src/controllers/member_dashboard.php');
 
 try {
     if (isset($_GET['action']) && $_GET['action'] !== '') {
@@ -33,6 +34,8 @@ try {
             deleteMember($memberId);
             header('Location: index.php?action=admin_members');
             exit;
+        } elseif ($_GET['action'] === 'member_dashboard') {
+            member_dashboard();
         } else {
             throw new Exception("Erreur 404 : la page que vous recherchez n'existe pas.");
         }
