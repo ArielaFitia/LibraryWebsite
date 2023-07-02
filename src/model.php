@@ -98,6 +98,13 @@ function updateLoan($loanId, $loanDate, $returnDate, $loanStatus)
     $statement->execute(['loanDate' => $loanDate, 'returnDate' => $returnDate, 'loanStatus' => $loanStatus, 'loanId' => $loanId]);
 }
 
+function deleteLoan($loanId)
+{
+    $db = dbConnect();
+    $statement = $db->prepare('DELETE FROM loan WHERE id = :loanId');
+    $statement->execute(['loanId' => $loanId]);
+}
+
 function createSuggestion($message, $userId, $bookId)
 {
     $db = dbConnect();

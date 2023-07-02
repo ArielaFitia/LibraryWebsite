@@ -28,6 +28,7 @@
                 <option value="En cours" <?= ($loan['loan_status'] == 'En cours') ? 'selected' : '' ?>>En cours</option>
             </select><br>
             <button type="submit">Modifier</button>
+            <a href="index.php?action=delete_loan&loan_id=<?= $loan['id'] ?>" onclick="return confirm('Êtes-vous sûr de vouloir supprimer cet emprunt ?')">Supprimer</a>
         </form>
     </div>
     <hr>

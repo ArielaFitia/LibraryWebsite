@@ -57,6 +57,10 @@ try {
             exit;
         } elseif ($_GET['action'] === 'admin_loans') {
             adminLoanManagement();
+        } elseif ($_GET['action'] === 'delete_loan' && isset($_GET['loan_id'])) {
+            $loanId = $_GET['loan_id'];
+            deleteLoan($loanId);
+            header('Location: index.php?action=admin_loans');
         } elseif ($_GET['action'] === 'member_dashboard') {
             member_dashboard();
         } elseif ($_GET['action'] === 'member_books') {
