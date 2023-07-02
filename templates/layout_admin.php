@@ -12,7 +12,7 @@
         <a href="index.php?action=admin_dashboard">Accueil</a>
         <a href="index.php?action=admin_books">Livres</a>
         <a href="index.php?action=admin_members">Membres</a>
-        <a href="">Emprunts</a>
+        <a href="index.php?action=admin_loans">Emprunts</a>
         <a href="">Suggestions</a>
         <button>Profil</button>
     </nav>

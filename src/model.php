@@ -78,6 +78,26 @@ function createLoan($userId, $bookId)
     ]);
 }
 
+function getLoans()
+{
+    $db = dbConnect();
+    $query = "SELECT loan.id, loan.loan_date, loan.return_date, loan.loan_status, book.title AS book_title, user.fullname AS user_name
+              FROM loan
+              INNER JOIN book ON loan.book_id = book.id
+              INNER JOIN user ON loan.user_id = user.id";
+    $statement = $db->prepare($query);
+    $statement->execute();
+    return $statement->fetchAll(PDO::FETCH_ASSOC);
+}
+
+function updateLoan($loanId, $loanDate, $returnDate, $loanStatus)
+{
+    $db = dbConnect();
+    $query = "UPDATE loan SET loan_date = :loanDate, return_date = :returnDate, loan_status = :loanStatus WHERE id = :loanId";
+    $statement = $db->prepare($query);
+    $statement->execute(['loanDate' => $loanDate, 'returnDate' => $returnDate, 'loanStatus' => $loanStatus, 'loanId' => $loanId]);
+}
+
 function createSuggestion($message, $userId, $bookId)
 {
     $db = dbConnect();

@@ -10,6 +10,7 @@ require_once('src/controllers/login.php');
 require_once('src/controllers/admin_dahsboard.php');
 require_once('src/controllers/admin_books.php');
 require_once('src/controllers/admin_members.php');
+require_once('src/controllers/admin_loans.php');
 require_once('src/controllers/member_dashboard.php');
 require_once('src/controllers/member_books.php');
 require_once('src/controllers/member_search.php');
@@ -54,6 +55,8 @@ try {
             deleteMember($memberId);
             header('Location: index.php?action=admin_members');
             exit;
+        } elseif ($_GET['action'] === 'admin_loans') {
+            adminLoanManagement();
         } elseif ($_GET['action'] === 'member_dashboard') {
             member_dashboard();
         } elseif ($_GET['action'] === 'member_books') {
