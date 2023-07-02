@@ -10,8 +10,8 @@
 <body>
     <nav>
         <a href="index.php?action=member_dashboard">Accueil</a>
-        <a href="">rechercher</a><br>
-        <button>profil</button>
+        <a href="index.php?action=member_search">Rechercher</a><br>
+        <button>Profil</button>
     </nav>
 
     <?= $content ?>
