@@ -31,6 +31,21 @@ function deleteMember($memberId)
     $statement->execute();
 }
 
+function updateMember($memberId, $password, $paymentDate, $expirationDate, $paymentOption)
+{
+    $db = memberDbConnect();
+    $statement = $db->prepare("UPDATE `user` SET password = :password WHERE id = :memberId");
+    $statement->bindParam(':password', $password);
+    $statement->bindParam(':memberId', $memberId);
+    $statement->execute();
+
+    $statement = $db->prepare("UPDATE contribution SET payment_date = :paymentDate, expiration_date = :expirationDate, payment_option = :paymentOption WHERE user_id = :memberId");
+    $statement->bindParam(':paymentDate', $paymentDate);
+    $statement->bindParam(':expirationDate', $expirationDate);
+    $statement->bindParam(':paymentOption', $paymentOption);
+    $statement->bindParam(':memberId', $memberId);
+    $statement->execute();
+}
 
 function addMember()
 {

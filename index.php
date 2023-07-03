@@ -54,6 +54,23 @@ try {
             admin_dashboard();
         } elseif ($_GET['action'] === 'admin_members') {
             admin_members();
+        } elseif ($_GET['action'] === 'update_member') {
+            if (isset($_POST['member_id'], $_POST['password'], $_POST['payment_date'], $_POST['expiration_date'], $_POST['payment_option'])) {
+                $memberId = $_POST['member_id'];
+                $password = $_POST['password'];
+                $paymentDate = $_POST['payment_date'];
+                $expirationDate = $_POST['expiration_date'];
+                $paymentOption = $_POST['payment_option'];
+
+                updateMember($memberId, $password, $paymentDate, $expirationDate, $paymentOption);
+
+                // Redirection vers la page d'administration des membres
+                header('Location: index.php?action=admin_members');
+                exit();
+            } else {
+                // Affichage d'un message d'erreur si les données sont incomplètes
+                throw new Exception('Erreur : Veuillez fournir toutes les informations nécessaires pour la mise à jour du membre.');
+            }
         } elseif ($_GET['action'] === 'delete_member' && isset($_GET['member_id'])) {
             $memberId = $_GET['member_id'];
             deleteMember($memberId);
