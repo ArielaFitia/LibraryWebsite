@@ -34,6 +34,17 @@
 <?php } ?>
 
 <a href="index.php?action=member_books">Voir plus</a>
+<br>
+
+<h1>Mes emprunts</h1><br>
+
+<?php foreach ($loans as $loan) { ?>
+    <h3><?= $loan['book_title'] ?></h3>
+    <p>Date d'emprunt : <?= $loan['loan_date'] ?></p>
+    <p>Date de retour : <?= $loan['return_date'] ?></p>
+    <p>Statut de l'emprunt : <?= $loan['loan_status'] ?></p>
+    <br>
+<?php } ?>
 
 <?php $content = ob_get_clean(); ?>
 

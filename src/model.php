@@ -124,6 +124,19 @@ function getLoans()
     return $statement->fetchAll(PDO::FETCH_ASSOC);
 }
 
+function getLoan($memberId)
+{
+    $db = dbConnect();
+    $statement = $db->prepare("SELECT loan.*, book.title AS book_title
+                              FROM loan
+                              INNER JOIN book ON loan.book_id = book.id
+                              WHERE loan.user_id = :memberId");
+    $statement->bindParam(':memberId', $memberId);
+    $statement->execute();
+    $loans = $statement->fetchAll(PDO::FETCH_ASSOC);
+    return $loans;
+}
+
 function updateLoan($loanId, $loanDate, $returnDate, $loanStatus)
 {
     $db = dbConnect();

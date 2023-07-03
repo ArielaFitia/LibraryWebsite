@@ -28,5 +28,9 @@ function member_dashboard()
         }
     }
 
+    // Récupérer les emprunts du membre connecté
+    $userId = $_SESSION['user_id'];
+    $loans = getLoan($userId);
+
     require('templates/member_dashboard.php');
 }
