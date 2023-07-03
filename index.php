@@ -11,6 +11,7 @@ require_once('src/controllers/admin_dahsboard.php');
 require_once('src/controllers/admin_books.php');
 require_once('src/controllers/admin_members.php');
 require_once('src/controllers/admin_loans.php');
+require_once('src/controllers/admin_suggestions.php');
 require_once('src/controllers/member_dashboard.php');
 require_once('src/controllers/member_books.php');
 require_once('src/controllers/member_search.php');
@@ -61,6 +62,14 @@ try {
             $loanId = $_GET['loan_id'];
             deleteLoan($loanId);
             header('Location: index.php?action=admin_loans');
+            exit;
+        } elseif ($_GET['action'] === 'admin_suggestions') {
+            adminSuggestions();
+        } elseif ($_GET['action'] === 'delete_suggestion' && isset($_GET['suggestion_id'])) {
+            $suggestionId = $_GET['suggestion_id'];
+            deleteSuggestion($suggestionId);
+            header('Location: index.php?action=admin_suggestions');
+            exit;
         } elseif ($_GET['action'] === 'member_dashboard') {
             member_dashboard();
         } elseif ($_GET['action'] === 'member_books') {
