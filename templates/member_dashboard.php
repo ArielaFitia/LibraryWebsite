@@ -15,10 +15,14 @@
     <p><?= $book['synopsis'] ?></p>
     <br>
 
-    <form method="POST" action="index.php?action=member_dashboard">
-        <input type="hidden" name="loan_book_id" value="<?= $book['id'] ?>">
-        <button type="submit">Emprunter</button>
-    </form>
+    <?php if ($book['availability'] === 'Disponible') { ?>
+        <form method="POST" action="index.php?action=member_dashboard">
+            <input type="hidden" name="loan_book_id" value="<?= $book['id'] ?>">
+            <button type="submit">Emprunter</button>
+        </form>
+    <?php } else if ($book['availability'] === 'Emprunté') { ?>
+        <p>Ce livre est actuellement indisponible à l'emprunt.</p>
+    <?php } ?>
 
     <form method="POST" action="index.php?action=member_dashboard">
         <input type="hidden" name="suggestion_book_id" value="<?= $book['id'] ?>">
