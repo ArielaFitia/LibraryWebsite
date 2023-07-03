@@ -12,7 +12,8 @@ function getBooks()
             'title' => $row['title'],
             'author' => $row['author'],
             'synopsis' => $row['synopsis'],
-            'availability' => $row['availability']
+            'availability' => $row['availability'],
+            'cover_image' => $row['cover_image']
         ];
         $books[] = $book;
     }
@@ -31,7 +32,8 @@ function getAllbooks()
             'title' => $row['title'],
             'author' => $row['author'],
             'synopsis' => $row['synopsis'],
-            'availability' => $row['availability']
+            'availability' => $row['availability'],
+            'cover_image' => $row['cover_image']
         ];
         $books[] = $book;
     }
@@ -41,7 +43,7 @@ function getAllbooks()
 function searchBook($searchQuery)
 {
     $db = dbConnect();
-    $statement = $db->prepare("SELECT * FROM book WHERE title LIKE :query OR author LIKE :query");
+    $statement = $db->prepare("SELECT * FROM book WHERE LOWER(title) LIKE LOWER(:query) OR LOWER(author) LIKE LOWER(:query)");
     $searchParam = "%$searchQuery%";
     $statement->bindParam(':query', $searchParam);
     $statement->execute();
@@ -59,6 +61,38 @@ function updateBook($bookId, $title, $author, $synopsis, $availability)
     $statement->bindParam(':availability', $availability);
     $statement->bindParam(':bookId', $bookId);
     $statement->execute();
+}
+
+function addBook($title, $author, $synopsis, $availability, $coverImage)
+{
+    $db = dbConnect();
+
+    // Préparation de la requête SQL pour l'insertion du livre
+    $statement = $db->prepare('INSERT INTO book (title, author, synopsis, availability, cover_image) VALUES (?, ?, ?, ?, ?)');
+
+    // Déplacement et stockage de l'image de couverture dans un dossier spécifique
+    $coverImageName = moveUploadedCoverImage($coverImage);
+
+    // Exécution de la requête avec les valeurs fournies
+    $statement->execute([$title, $author, $synopsis, $availability, $coverImageName]);
+}
+
+function moveUploadedCoverImage($coverImage)
+{
+    $uploadDirectory = 'cover_images/';
+    $coverImageName = generateUniqueFileName($coverImage['name']);
+    $targetPath = $uploadDirectory . $coverImageName;
+
+    // Déplacement du fichier temporaire vers l'emplacement final
+    move_uploaded_file($coverImage['tmp_name'], $targetPath);
+
+    return $coverImageName;
+}
+
+function generateUniqueFileName($originalFileName)
+{
+    $uniqueName = uniqid() . '_' . $originalFileName;
+    return $uniqueName;
 }
 
 function createLoan($userId, $bookId)

@@ -9,6 +9,7 @@ require_once('src/controllers/admin_registerAdmin.php');
 require_once('src/controllers/login.php');
 require_once('src/controllers/admin_dahsboard.php');
 require_once('src/controllers/admin_books.php');
+require_once('src/controllers/admin_addBook.php');
 require_once('src/controllers/admin_members.php');
 require_once('src/controllers/admin_loans.php');
 require_once('src/controllers/admin_suggestions.php');
@@ -41,6 +42,8 @@ try {
                     exit;
                 }
             }
+        } elseif ($_GET['action'] === 'admin_addBook') {
+            admin_addBook();
         } elseif ($_GET['action'] === 'registerMember') {
             registerMember();
         } elseif ($_GET['action'] === 'registerAdmin') {

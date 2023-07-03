@@ -3,9 +3,11 @@
 <?php ob_start(); ?>
 
 <?php foreach ($books as $book) { ?>
+    <img src="cover_images/<?= $book['cover_image'] ?>" alt="Couverture du livre">
     <h3><?= $book['title'] ?></h3>
     <h2><?= $book['author'] ?></h2>
     <p><?= $book['synopsis'] ?></p>
+    <br>
 
     <form method="POST" action="index.php?action=update_book&id=<?= $book['id'] ?>">
         <label for="title">Titre:</label>

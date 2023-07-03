@@ -17,7 +17,11 @@
     <h2>Résultats de la recherche :</h2>
     <ul>
         <?php foreach ($books as $book) { ?>
-            <li><?= $book['title'] ?> - <?= $book['author'] ?></li>
+            <img src="cover_images/<?= $book['cover_image'] ?>" alt="Couverture du livre">
+            <h3><?= $book['title'] ?></h3>
+            <h2><?= $book['author'] ?></h2>
+            <p><?= $book['synopsis'] ?></p>
+            <br>
         <?php } ?>
     </ul>
     <form method="POST" action="index.php?action=member_search">
