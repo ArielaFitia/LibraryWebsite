@@ -26,8 +26,8 @@
 
         <label for="payment_option">Option de paiement :</label>
         <select name="payment_option" required>
-            <option value="single">Paiement en une fois</option>
-            <option value="installments">Paiement en deux tranches</option>
+            <option value="Paiement en une fois">Paiement en une fois</option>
+            <option value="Paiement en deux tranches">Paiement en deux tranches</option>
         </select><br>
 
 

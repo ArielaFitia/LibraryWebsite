@@ -3,7 +3,7 @@
 function getMembers()
 {
     $db = memberDbConnect();
-    $statement = $db->prepare("SELECT * FROM `user` WHERE status = 'membre'");
+    $statement = $db->prepare("SELECT u.id, u.fullname, u.email, u.password, c.payment_date, c.expiration_date, c.payment_option FROM `user` AS u LEFT JOIN contribution AS c ON u.id = c.user_id WHERE u.status = 'membre'");
     $members = [];
 
     $statement->execute();
@@ -13,7 +13,10 @@ function getMembers()
             'id' => $row['id'],
             'fullname' => $row['fullname'],
             'email' => $row['email'],
-            'password' => $row['password']
+            'password' => $row['password'],
+            'payment_date' => $row['payment_date'],
+            'expiration_date' => $row['expiration_date'],
+            'payment_option' => $row['payment_option']
         ];
         $members[] = $member;
     }

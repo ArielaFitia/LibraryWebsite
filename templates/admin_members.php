@@ -7,11 +7,15 @@
     <h1><?= $member['fullname'] ?></h1>
     <h1><?= $member['email'] ?></h1>
     <h1><?= $member['password'] ?></h1>
+    <h1>Date de paiement : <?= $member['payment_date'] ?></h1>
+    <h1>Date d'expiration : <?= $member['expiration_date'] ?></h1>
+    <h1>Option de paiement : <?= $member['payment_option'] ?></h1>
     <br>
     <form method="POST" action="index.php?action=delete_member&amp;member_id=<?= $member['id']; ?>" onsubmit="return confirm('Êtes-vous sûr de vouloir supprimer ce membre ?')">
         <button type="submit" name="delete_member">Supprimer</button>
     </form>
 <?php } ?>
+
 
 <?php $content = ob_get_clean(); ?>
 
