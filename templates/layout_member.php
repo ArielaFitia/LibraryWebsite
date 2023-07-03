@@ -15,7 +15,7 @@
         <ul>
             <li>Bienvenue, <?= $userName ?> (ID: <?= $userId ?>)</li>
         </ul>
-
+        <a href="index.php?action=logout">Déconnexion</a>
     </nav>
 
     <?= $content ?>

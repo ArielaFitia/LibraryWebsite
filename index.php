@@ -18,6 +18,7 @@ require_once('src/controllers/admin_searchMember.php');
 require_once('src/controllers/member_dashboard.php');
 require_once('src/controllers/member_books.php');
 require_once('src/controllers/member_search.php');
+require_once('src/controllers/logout.php');
 
 try {
     if (isset($_GET['action']) && $_GET['action'] !== '') {
@@ -100,6 +101,8 @@ try {
             member_dashboard();
         } elseif ($_GET['action'] === 'member_books') {
             member_books();
+        } elseif ($_GET['action'] === 'logout') {
+            logout();
         } elseif ($_GET['action'] === 'member_search') {
             member_search();
         } else {

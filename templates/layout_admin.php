@@ -15,7 +15,7 @@
         <a href="index.php?action=admin_members">Membres</a>
         <a href="index.php?action=admin_loans">Emprunts</a>
         <a href="index.php?action=admin_suggestions">Suggestions</a>
-        <button>Profil</button>
+        <a href="index.php?action=logout">Déconnexion</a>
     </nav>
 
     <?= $content ?>
