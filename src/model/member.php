@@ -31,6 +31,21 @@ function deleteMember($memberId)
     $statement->execute();
 }
 
+function searchMember($searchQuery)
+{
+    $db = memberDbConnect();
+    $statement = $db->prepare("SELECT u.*, c.payment_date, c.expiration_date, c.payment_option 
+                              FROM user u 
+                              LEFT JOIN contribution c ON u.id = c.user_id
+                              WHERE u.id LIKE :query AND u.status = 'membre'");
+    $searchParam = "%$searchQuery%";
+    $statement->bindParam(':query', $searchParam);
+    $statement->execute();
+    $members = $statement->fetchAll(PDO::FETCH_ASSOC);
+    return $members;
+}
+
+
 function updateMember($memberId, $password, $paymentDate, $expirationDate, $paymentOption)
 {
     $db = memberDbConnect();

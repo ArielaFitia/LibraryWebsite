@@ -14,6 +14,7 @@ require_once('src/controllers/admin_members.php');
 require_once('src/controllers/admin_loans.php');
 require_once('src/controllers/admin_suggestions.php');
 require_once('src/controllers/admin_searchBook.php');
+require_once('src/controllers/admin_searchMember.php');
 require_once('src/controllers/member_dashboard.php');
 require_once('src/controllers/member_books.php');
 require_once('src/controllers/member_search.php');
@@ -93,6 +94,8 @@ try {
             exit;
         } elseif ($_GET['action'] === 'admin_searchBook') {
             admin_searchBook();
+        } elseif ($_GET['action'] === 'admin_searchMember') {
+            admin_searchMember();
         } elseif ($_GET['action'] === 'member_dashboard') {
             member_dashboard();
         } elseif ($_GET['action'] === 'member_books') {
