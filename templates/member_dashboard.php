@@ -46,6 +46,16 @@
     <br>
 <?php } ?>
 
+<h1>Votre cotisation</h1><br>
+
+<?php if ($contribution !== false) { ?>
+    <p>Date de paiement : <?= $contribution['payment_date'] ?></p>
+    <p>Date d'expiration : <?= $contribution['expiration_date'] ?></p>
+    <p>Option de paiement : <?= $contribution['payment_option'] ?></p>
+<?php } else { ?>
+    <p>Vous n'avez pas encore effectué de cotisation.</p>
+<?php } ?>
+
 <?php $content = ob_get_clean(); ?>
 
 <?php require('layout_member.php'); ?>

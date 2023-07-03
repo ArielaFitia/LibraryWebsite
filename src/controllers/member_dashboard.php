@@ -6,6 +6,7 @@ function member_dashboard()
 {
     $books = getBooks();
     $confirmationMessage = '';
+    $userId = $_SESSION['user_id'];
 
     if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         if (isset($_POST['loan_book_id'])) {
@@ -29,8 +30,10 @@ function member_dashboard()
     }
 
     // Récupérer les emprunts du membre connecté
-    $userId = $_SESSION['user_id'];
     $loans = getLoan($userId);
+
+    // Récupérer les informations de cotisation du membre connecté
+    $contribution = getContribution($userId);
 
     require('templates/member_dashboard.php');
 }

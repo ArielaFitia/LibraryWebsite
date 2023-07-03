@@ -51,6 +51,7 @@ function searchBook($searchQuery)
     return $books;
 }
 
+
 function updateBook($bookId, $title, $author, $synopsis, $availability)
 {
     $db = dbConnect();
@@ -93,6 +94,16 @@ function generateUniqueFileName($originalFileName)
 {
     $uniqueName = uniqid() . '_' . $originalFileName;
     return $uniqueName;
+}
+
+function getContribution($userId)
+{
+    $db = memberDbConnect();
+    $statement = $db->prepare("SELECT * FROM contribution WHERE user_id = :userId");
+    $statement->bindParam(':userId', $userId);
+    $statement->execute();
+    $contribution = $statement->fetch(PDO::FETCH_ASSOC);
+    return $contribution;
 }
 
 function createLoan($userId, $bookId)
