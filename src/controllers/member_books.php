@@ -4,6 +4,13 @@ require_once('src/model.php');
 
 function member_books()
 {
+    if (!isset($_SESSION['user_id'])) {
+        header('Location: index.php?action=login');
+        exit();
+    }
+
+    $userName = $_SESSION['fullname'];
+    $userId = $_SESSION['user_id'];
     $books = getAllbooks();
     $confirmationMessage = '';
 

@@ -238,7 +238,8 @@ function login()
         if ($user) {
             // Connexion réussie, rediriger en fonction du statut
             if ($status === 'membre') {
-                $_SESSION['user_id'] = $user['id']; // Ajout de la ligne de la session
+                $_SESSION['user_id'] = $user['id'];
+                $_SESSION['fullname'] = $user['fullname']; // Ajout de la ligne de la session
                 header('Location: index.php?action=member_dashboard');
                 exit();
             } elseif ($status === 'admin') {

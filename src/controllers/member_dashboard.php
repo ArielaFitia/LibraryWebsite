@@ -4,6 +4,12 @@ require_once('src/model.php');
 
 function member_dashboard()
 {
+    if (!isset($_SESSION['user_id'])) {
+        header('Location: index.php?action=login');
+        exit();
+    }
+
+    $userName = $_SESSION['fullname'];
     $books = getBooks();
     $confirmationMessage = '';
     $userId = $_SESSION['user_id'];

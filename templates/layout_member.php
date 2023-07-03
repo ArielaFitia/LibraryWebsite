@@ -12,6 +12,10 @@
         <a href="index.php?action=member_dashboard">Accueil</a>
         <a href="index.php?action=member_search">Rechercher</a><br>
         <button>Profil</button>
+        <ul>
+            <li>Bienvenue, <?= $userName ?> (ID: <?= $userId ?>)</li>
+        </ul>
+
     </nav>
 
     <?= $content ?>
