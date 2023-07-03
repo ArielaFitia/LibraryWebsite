@@ -13,6 +13,7 @@ require_once('src/controllers/admin_addBook.php');
 require_once('src/controllers/admin_members.php');
 require_once('src/controllers/admin_loans.php');
 require_once('src/controllers/admin_suggestions.php');
+require_once('src/controllers/admin_searchBook.php');
 require_once('src/controllers/member_dashboard.php');
 require_once('src/controllers/member_books.php');
 require_once('src/controllers/member_search.php');
@@ -90,6 +91,8 @@ try {
             deleteSuggestion($suggestionId);
             header('Location: index.php?action=admin_suggestions');
             exit;
+        } elseif ($_GET['action'] === 'admin_searchBook') {
+            admin_searchBook();
         } elseif ($_GET['action'] === 'member_dashboard') {
             member_dashboard();
         } elseif ($_GET['action'] === 'member_books') {
