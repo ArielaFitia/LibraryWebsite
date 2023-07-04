@@ -22,6 +22,11 @@ require_once('src/controllers/member_search.php');
 require_once('src/controllers/logout.php');
 
 try {
+    $bookRepository = new BookRepository(new DatabaseConnection());
+    $loanRepository = new LoanRepository(new DatabaseConnection());
+    $suggestionRepository = new SuggestionRepository(new DatabaseConnection());
+    $userRepository = new UserRepository(new DatabaseConnection());
+
     if (isset($_GET['action']) && $_GET['action'] !== '') {
         if ($_GET['action'] === 'homepage_books') {
             homepage_books();
@@ -39,7 +44,7 @@ try {
                     $availability = $_POST['availability'];
 
                     // Appel à une fonction du modèle pour mettre à jour le livre
-                    updateBook($identifier, $title, $author, $synopsis, $availability);
+                    $bookRepository->updateBook($identifier, $title, $author, $synopsis, $availability);
 
                     // Redirection vers la page admin_books pour afficher les livres mis à jour
                     header('Location: index.php?action=admin_books');
@@ -66,7 +71,7 @@ try {
                 $expirationDate = $_POST['expiration_date'];
                 $paymentOption = $_POST['payment_option'];
 
-                updateMember($memberId, $password, $paymentDate, $expirationDate, $paymentOption);
+                $userRepository->updateMember($memberId, $password, $paymentDate, $expirationDate, $paymentOption);
 
                 // Redirection vers la page d'administration des membres
                 header('Location: index.php?action=admin_members');
@@ -77,21 +82,21 @@ try {
             }
         } elseif ($_GET['action'] === 'delete_member' && isset($_GET['member_id'])) {
             $memberId = $_GET['member_id'];
-            deleteMember($memberId);
+            $userRepository->deleteMember($memberId);
             header('Location: index.php?action=admin_members');
             exit;
         } elseif ($_GET['action'] === 'admin_loans') {
             adminLoanManagement();
         } elseif ($_GET['action'] === 'delete_loan' && isset($_GET['loan_id'])) {
             $loanId = $_GET['loan_id'];
-            deleteLoan($loanId);
+            $loanRepository->deleteLoan($loanId);
             header('Location: index.php?action=admin_loans');
             exit;
         } elseif ($_GET['action'] === 'admin_suggestions') {
             adminSuggestions();
         } elseif ($_GET['action'] === 'delete_suggestion' && isset($_GET['suggestion_id'])) {
             $suggestionId = $_GET['suggestion_id'];
-            deleteSuggestion($suggestionId);
+            $suggestionRepository->deleteSuggestion($suggestionId);
             header('Location: index.php?action=admin_suggestions');
             exit;
         } elseif ($_GET['action'] === 'admin_searchBook') {

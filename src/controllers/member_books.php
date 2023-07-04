@@ -1,5 +1,6 @@
 <?php
 
+require_once('src/lib/database.php');
 require_once('src/model/book.php');
 require_once('src/model/loan.php');
 require_once('src/model/suggestion.php');
@@ -11,9 +12,12 @@ function member_books()
         exit();
     }
 
+    $bookRepository = new BookRepository(new DatabaseConnection());
+    $loanRepository = new LoanRepository(new DatabaseConnection());
+    $suggestionRepository = new SuggestionRepository(new DatabaseConnection());
     $userName = $_SESSION['fullname'];
     $userId = $_SESSION['user_id'];
-    $books = getAllbooks();
+    $books = $bookRepository->getAllbooks();
     $confirmationMessage = '';
 
     if ($_SERVER['REQUEST_METHOD'] === 'POST') {
@@ -21,7 +25,7 @@ function member_books()
             $bookId = $_POST['loan_book_id'];
             $userId = $_SESSION['user_id'];
 
-            createLoan($userId, $bookId);
+            $loanRepository->createLoan($userId, $bookId);
 
             // Message de confirmation
             $confirmationMessage = 'L\'emprunt est en attente de confirmation, veuillez vous rendre à notre établissement.';
@@ -30,7 +34,7 @@ function member_books()
             $userId = $_SESSION['user_id'];
             $suggestionMessage = $_POST['suggestion_message'];
 
-            createSuggestion($suggestionMessage, $userId, $bookId);
+            $suggestionRepository->createSuggestion($suggestionMessage, $userId, $bookId);
 
             // Message de confirmation
             $confirmationMessage = 'Votre suggestion a été envoyée avec succès.';

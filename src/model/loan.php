@@ -1,65 +1,78 @@
 <?php
 
-function createLoan($userId, $bookId)
-{
-    $db = loanDbConnect();
-    $loanDate = date('Y-m-d');
-    $returnDate = date('Y-m-d', strtotime('+14 days'));
-    $status = 'En attente';
+require_once('src/lib/database.php');
 
-    $statement = $db->prepare("INSERT INTO loan (loan_date, return_date, loan_status, user_id, book_id) VALUES (:loan_date, :return_date, :loan_status, :user_id, :book_id)");
-    $statement->execute([
-        'loan_date' => $loanDate,
-        'return_date' => $returnDate,
-        'loan_status' => $status,
-        'user_id' => $userId,
-        'book_id' => $bookId
-    ]);
+class Loan
+{
+    public string $id;
+    public string $loan_date;
+    public string $return_date;
+    public string $loan_status;
+    public string $user_id;
+    public string $book_id;
 }
 
-function getLoans()
+class LoanRepository
 {
-    $db = loanDbConnect();
-    $query = "SELECT loan.id, loan.loan_date, loan.return_date, loan.loan_status, book.title AS book_title, user.fullname AS user_name
+    private DatabaseConnection $connection;
+
+    public function __construct(DatabaseConnection $connection)
+    {
+        $this->connection = $connection;
+    }
+
+    public function createLoan(string $userId, string $bookId): void
+    {
+        $loanDate = date('Y-m-d');
+        $returnDate = date('Y-m-d', strtotime('+14 days'));
+        $status = 'En attente';
+
+        $statement = $this->connection->getConnection()->prepare("INSERT INTO loan (loan_date, return_date, loan_status, user_id, book_id) VALUES (:loan_date, :return_date, :loan_status, :user_id, :book_id)");
+        $statement->execute([
+            'loan_date' => $loanDate,
+            'return_date' => $returnDate,
+            'loan_status' => $status,
+            'user_id' => $userId,
+            'book_id' => $bookId
+        ]);
+    }
+
+    public function getLoans(): array
+    {
+        $query = "SELECT loan.id, loan.loan_date, loan.return_date, loan.loan_status, book.title AS book_title, user.fullname AS user_name
               FROM loan
               INNER JOIN book ON loan.book_id = book.id
               INNER JOIN user ON loan.user_id = user.id";
-    $statement = $db->prepare($query);
-    $statement->execute();
-    return $statement->fetchAll(PDO::FETCH_ASSOC);
-}
+        $statement = $this->connection->getConnection()->prepare($query);
+        $statement->execute();
+        $loans = $statement->fetchAll(PDO::FETCH_ASSOC);
 
-function getLoan($memberId)
-{
-    $db = loanDbConnect();
-    $statement = $db->prepare("SELECT loan.*, book.title AS book_title
+        return $loans;
+    }
+
+    public function getLoan(string $memberId): array
+    {
+        $statement = $this->connection->getConnection()->prepare("SELECT loan.*, book.title AS book_title
                               FROM loan
                               INNER JOIN book ON loan.book_id = book.id
                               WHERE loan.user_id = :memberId");
-    $statement->bindParam(':memberId', $memberId);
-    $statement->execute();
-    $loans = $statement->fetchAll(PDO::FETCH_ASSOC);
-    return $loans;
-}
+        $statement->bindParam(':memberId', $memberId);
+        $statement->execute();
+        $loans = $statement->fetchAll(PDO::FETCH_ASSOC);
 
-function updateLoan($loanId, $loanDate, $returnDate, $loanStatus)
-{
-    $db = loanDbConnect();
-    $query = "UPDATE loan SET loan_date = :loanDate, return_date = :returnDate, loan_status = :loanStatus WHERE id = :loanId";
-    $statement = $db->prepare($query);
-    $statement->execute(['loanDate' => $loanDate, 'returnDate' => $returnDate, 'loanStatus' => $loanStatus, 'loanId' => $loanId]);
-}
+        return $loans;
+    }
 
-function deleteLoan($loanId)
-{
-    $db = loanDbConnect();
-    $statement = $db->prepare('DELETE FROM loan WHERE id = :loanId');
-    $statement->execute(['loanId' => $loanId]);
-}
+    public function updateLoan(string $loanId, string $loanDate, string $returnDate, string $loanStatus): void
+    {
+        $query = "UPDATE loan SET loan_date = :loanDate, return_date = :returnDate, loan_status = :loanStatus WHERE id = :loanId";
+        $statement = $this->connection->getConnection()->prepare($query);
+        $statement->execute(['loanDate' => $loanDate, 'returnDate' => $returnDate, 'loanStatus' => $loanStatus, 'loanId' => $loanId]);
+    }
 
-function loanDbConnect()
-{
-
-    $db = new PDO('mysql:host=localhost;dbname=library_website;charset=utf8', 'root', 'root');
-    return $db;
+    public function deleteLoan(string $loanId): void
+    {
+        $statement = $this->connection->getConnection()->prepare('DELETE FROM loan WHERE id = :loanId');
+        $statement->execute(['loanId' => $loanId]);
+    }
 }

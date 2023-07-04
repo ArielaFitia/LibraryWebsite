@@ -6,6 +6,7 @@
 </head>
 
 <body>
+    <a href="index.php?action=admin_dashboard">retour</a>
     <h1>Inscription membre</h1>
 
     <form method="POST" action="index.php?action=registerMember">

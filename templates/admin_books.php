@@ -3,23 +3,23 @@
 <?php ob_start(); ?>
 
 <?php foreach ($books as $book) { ?>
-    <img src="cover_images/<?= $book['cover_image'] ?>" alt="Couverture du livre">
-    <h3><?= $book['title'] ?></h3>
-    <h2><?= $book['author'] ?></h2>
-    <p><?= $book['synopsis'] ?></p>
+    <img src="cover_images/<?= $book->cover_image ?>" alt="Couverture du livre">
+    <h3><?= $book->title ?></h3>
+    <h2><?= $book->author ?></h2>
+    <p><?= $book->synopsis ?></p>
     <br>
 
-    <form method="POST" action="index.php?action=update_book&id=<?= $book['id'] ?>">
+    <form method="POST" action="index.php?action=update_book&id=<?= $book->id ?>">
         <label for="title">Titre:</label>
-        <input type="text" name="title" value="<?= $book['title'] ?>">
+        <input type="text" name="title" value="<?= $book->title ?>">
         <label for="author">Auteur:</label>
-        <input type="text" name="author" value="<?= $book['author'] ?>">
+        <input type="text" name="author" value="<?= $book->author ?>">
         <label for="synopsis">Synopsis:</label>
-        <textarea name="synopsis"><?= $book['synopsis'] ?></textarea>
+        <textarea name="synopsis"><?= $book->synopsis ?></textarea>
         <label for="availability">Disponibilité:</label>
         <select name="availability">
-            <option value="Disponible" <?= ($book['availability'] === 'Disponible') ? 'selected' : '' ?>>Disponible</option>
-            <option value="Emprunté" <?= ($book['availability'] === 'Emprunté') ? 'selected' : '' ?>>Emprunté</option>
+            <option value="Disponible" <?= ($book->availability === 'Disponible') ? 'selected' : '' ?>>Disponible</option>
+            <option value="Emprunté" <?= ($book->availability === 'Emprunté') ? 'selected' : '' ?>>Emprunté</option>
         </select>
         <button type="submit">Modifier</button>
     </form>

@@ -1,18 +1,31 @@
 <?php
 
-function getContribution($userId)
+require_once('src/lib/database.php');
+
+class Contribution
 {
-    $db = contributionDbConnect();
-    $statement = $db->prepare("SELECT * FROM contribution WHERE user_id = :userId");
-    $statement->bindParam(':userId', $userId);
-    $statement->execute();
-    $contribution = $statement->fetch(PDO::FETCH_ASSOC);
-    return $contribution;
+    public string $id;
+    public string $payment_date;
+    public string $expiration_date;
+    public string $payment_option;
+    public string $user_id;
 }
 
-function contributionDbConnect()
+class ContributionRepository
 {
+    private DatabaseConnection $connection;
 
-    $db = new PDO('mysql:host=localhost;dbname=library_website;charset=utf8', 'root', 'root');
-    return $db;
+    public function __construct(DatabaseConnection $connection)
+    {
+        $this->connection = $connection;
+    }
+
+    public function getContribution(string $userId): array
+    {
+        $statement = $this->connection->getConnection()->prepare("SELECT * FROM contribution WHERE user_id = :userId");
+        $statement->bindParam(':userId', $userId);
+        $statement->execute();
+        $contribution = $statement->fetch(PDO::FETCH_ASSOC);
+        return $contribution;
+    }
 }
