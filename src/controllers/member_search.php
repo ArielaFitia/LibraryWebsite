@@ -1,6 +1,8 @@
 <?php
 
-require_once('src/model.php');
+require_once('src/model/book.php');
+require_once('src/model/loan.php');
+require_once('src/model/suggestion.php');
 
 function member_search()
 {

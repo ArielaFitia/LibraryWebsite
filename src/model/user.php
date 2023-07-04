@@ -2,7 +2,7 @@
 
 function getMembers()
 {
-    $db = memberDbConnect();
+    $db = userDbConnect();
     $statement = $db->prepare("SELECT u.id, u.fullname, u.email, u.password, c.payment_date, c.expiration_date, c.payment_option FROM `user` AS u LEFT JOIN contribution AS c ON u.id = c.user_id WHERE u.status = 'membre'");
     $members = [];
 
@@ -25,7 +25,7 @@ function getMembers()
 
 function deleteMember($memberId)
 {
-    $db = memberDbConnect();
+    $db = userDbConnect();
     $statement = $db->prepare("DELETE FROM `user` WHERE id = :memberId");
     $statement->bindValue(':memberId', $memberId, PDO::PARAM_INT);
     $statement->execute();
@@ -33,7 +33,7 @@ function deleteMember($memberId)
 
 function searchMember($searchQuery)
 {
-    $db = memberDbConnect();
+    $db = userDbConnect();
     $statement = $db->prepare("SELECT u.*, c.payment_date, c.expiration_date, c.payment_option 
                               FROM user u 
                               LEFT JOIN contribution c ON u.id = c.user_id
@@ -45,10 +45,9 @@ function searchMember($searchQuery)
     return $members;
 }
 
-
 function updateMember($memberId, $password, $paymentDate, $expirationDate, $paymentOption)
 {
-    $db = memberDbConnect();
+    $db = userDbConnect();
     $statement = $db->prepare("UPDATE `user` SET password = :password WHERE id = :memberId");
     $statement->bindParam(':password', $password);
     $statement->bindParam(':memberId', $memberId);
@@ -64,7 +63,7 @@ function updateMember($memberId, $password, $paymentDate, $expirationDate, $paym
 
 function addMember()
 {
-    $db = memberDbConnect();
+    $db = userDbConnect();
     // Traitement du formulaire d'inscription
     if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         // Récupération des données du formulaire
@@ -91,7 +90,57 @@ function addMember()
     }
 }
 
-function memberDbConnect()
+function addAdmin()
+{
+    $db = userDbConnect();
+    if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+        // Récupération des données du formulaire
+        $fullname = $_POST['fullname'];
+        $email = $_POST['email'];
+        $password = $_POST['password'];
+
+        // Insertion des données dans la table "user"
+        $statement = $db->prepare('INSERT INTO user (fullname, email, password, status) VALUES (?, ?, ?, ?)');
+        $statement->execute([$fullname, $email, $password, 'admin']);
+
+        // Affichage d'un message de succès
+        echo "Inscription réussie !";
+    }
+}
+
+function login()
+{
+    $db = userDbConnect();
+    // Traitement du formulaire de connexion
+    if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+        $id = $_POST['id'];
+        $password = $_POST['password'];
+        $status = $_POST['status'];
+
+        // Vérification des informations de connexion dans la base de données
+        $statement = $db->prepare("SELECT * FROM user WHERE id = :id AND password = :password AND status = :status");
+        $statement->execute(['id' => $id, 'password' => $password, 'status' => $status]);
+        $user = $statement->fetch();
+
+        if ($user) {
+            // Connexion réussie, rediriger en fonction du statut
+            if ($status === 'membre') {
+                $_SESSION['user_id'] = $user['id'];
+                $_SESSION['fullname'] = $user['fullname']; // Ajout de la ligne de la session
+                header('Location: index.php?action=member_dashboard');
+                exit();
+            } elseif ($status === 'admin') {
+                $_SESSION['user_id'] = $user['id']; // Ajout de la ligne de la session
+                header('Location: index.php?action=admin_dashboard');
+                exit();
+            }
+        } else {
+            throw new Exception("Identifiants incorrects. Veuillez réessayer.");
+        }
+    }
+}
+
+function userDbConnect()
 {
 
     $db = new PDO('mysql:host=localhost;dbname=library_website;charset=utf8', 'root', 'root');

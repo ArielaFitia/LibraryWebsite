@@ -1,6 +1,6 @@
 <?php
 
-require_once('src/model.php');
+require_once('src/model/book.php');
 
 function homepage_search()
 {

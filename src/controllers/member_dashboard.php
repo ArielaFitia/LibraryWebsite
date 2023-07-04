@@ -1,6 +1,9 @@
 <?php
 
-require_once('src/model.php');
+require_once('src/model/book.php');
+require_once('src/model/loan.php');
+require_once('src/model/suggestion.php');
+require_once('src/model/contribution.php');
 
 function member_dashboard()
 {
