@@ -3,32 +3,49 @@
 <?php ob_start(); ?>
 
 <?php if ($confirmationMessage !== '') { ?>
-    <p><?= $confirmationMessage ?></p>
+    <div class="my-5 alert alert-success" role="alert">
+        <?= $confirmationMessage ?>
+    </div>
 <?php } ?>
 
-<h1>Admin - Ajouter un livre</h1>
+<section class="my-5">
+    <div class="container">
+        <div class="row justify-content-evenly">
+            <div class="col-12">
+                <form method="POST" action="index.php?action=admin_addBook" enctype="multipart/form-data">
+                    <div class="mb-3">
+                        <label for="formGroupExampleInput" class="form-label">Titre</label>
+                        <input type="text" class="form-control" id="formGroupExampleInput" name="title" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="formGroupExampleInput2" class="form-label">Auteur</label>
+                        <input type="text" class="form-control" id="formGroupExampleInput2" name="author" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="exampleFormControlTextarea1" class="form-label">Synopsis</label>
+                        <textarea class="form-control" id="exampleFormControlTextarea1" rows="6" name="synopsis" required></textarea>
+                    </div>
+                    <div class="mb-3">
+                        <label for="availability" class="form-label">Disponibilité</label>
+                        <select name="availability" class="form-select">
+                            <option value="Disponible">Disponible</option>
+                            <option value="Emprunté">Emprunté</option>
+                        </select>
+                    </div>
+                    <div class="mb-3">
+                        <label for="formGroupExampleInput3" class="form-label">Image de couverture</label>
+                        <input type="file" class="form-control" id="formGroupExampleInput3" name="cover_image">
+                    </div>
+                    <div class="mb-3">
+                        <button type="submit" class="btn btn-primary">Ajouter</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</section>
 
-<form method="POST" action="index.php?action=admin_addBook" enctype="multipart/form-data">
-    <label for="title">Titre :</label>
-    <input type="text" name="title" required><br>
 
-    <label for="author">Auteur :</label>
-    <input type="text" name="author" required><br>
-
-    <label for="synopsis">Synopsis :</label>
-    <textarea name="synopsis" required></textarea><br>
-
-    <label for="availability">Disponibilité :</label>
-    <select name="availability">
-        <option value="Disponible">Disponible</option>
-        <option value="Emprunté">Emprunté</option>
-    </select><br>
-
-    <label for="cover_image">Image de couverture :</label>
-    <input type="file" name="cover_image"><br>
-
-    <input type="submit" value="Ajouter">
-</form>
 
 <?php $content = ob_get_clean(); ?>
 

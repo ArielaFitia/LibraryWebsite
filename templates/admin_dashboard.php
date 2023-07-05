@@ -2,11 +2,35 @@
 
 <?php ob_start(); ?>
 
-<a href="index.php?action=registerMember">Inscrire un membre</a><br>
-<a href="index.php?action=registerAdmin">Inscrire un admin</a>
-<a href="index.php?action=admin_searchMember">Rechercher membre</a>
-<a href="index.php?action=admin_searchBook">Rechercher livre</a>
-
+<main>
+    <section class="my-5">
+        <div class="container">
+            <div class="row justify-content-evenly">
+                <div class="col-5">
+                    <img src="public\images\decision.svg" alt="decision" width="100%">
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="py-5">
+        <div class="container text-center">
+            <div class="row justify-content-evenly">
+                <div class="col-3">
+                    <a class="btn btn-secondary" href="index.php?action=registerMember" role="button">Inscrire un nouveau membre</a>
+                </div>
+                <div class="col-3">
+                    <a class="btn btn-secondary" href="index.php?action=registerAdmin" role="button">Inscrire un(e) bibliothécaire </a>
+                </div>
+                <div class="col-3">
+                    <a class="btn btn-secondary" href="index.php?action=admin_searchMember" role="button">Rechercher un membre</a>
+                </div>
+                <div class="col-3">
+                    <a class="btn btn-secondary" href="index.php?action=admin_searchBook" role="button">Rechercher un livre</a>
+                </div>
+            </div>
+        </div>
+    </section>
+</main>
 <?php $content = ob_get_clean(); ?>
 
 <?php require('layout_admin.php'); ?>
