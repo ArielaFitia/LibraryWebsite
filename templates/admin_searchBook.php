@@ -36,7 +36,9 @@
         <br>
     <?php } ?>
 
-<?php }  ?>
+<?php } else { ?>
+    <p>Aucun resultat sur la recherche</p>
+<?php } ?>
 
 <?php $content = ob_get_clean(); ?>
 
