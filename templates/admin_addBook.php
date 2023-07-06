@@ -3,8 +3,9 @@
 <?php ob_start(); ?>
 
 <?php if ($confirmationMessage !== '') { ?>
-    <div class="my-5 alert alert-success" role="alert">
+    <div class="my-5 alert alert-success alert-dismissible fade show" role="alert">
         <?= $confirmationMessage ?>
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
     </div>
 <?php } ?>
 

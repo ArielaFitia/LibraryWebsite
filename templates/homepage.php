@@ -9,7 +9,7 @@
                     <h1>Inkwell <br> Library</h1>
                     <h3>Inkwell Library est une bibliothèque où l'écriture et la créativité prennent vie.
                         Trouvez ! empruntez ! lisez !</h3>
-                    <div class="pt-3"><a class="btn bg-success" href="#" role="button">En savoir plus</a></div>
+                    <div class="pt-3"><a class="btn bg-secondary" href="#" role="button">En savoir plus</a></div>
                 </div>
                 <div class="col-6">
                     <img src="public\images\reading_time.png" alt="illustration lecture" width="100%">

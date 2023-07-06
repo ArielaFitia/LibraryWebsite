@@ -11,7 +11,7 @@
 <body>
     <header>
         <nav class="navbar">
-            <a class="ms-5 navbar-brand" href="#">inkwellly</a>
+            <a class="ms-5 navbar-brand" href="#"><img src="public\images\inkwellly.png" alt="logo"></a>
         </nav>
     </header>
     <main>

@@ -12,7 +12,7 @@
     <header class="py-4">
         <nav class="navbar navbar-expand-md fixed-top navbar-light bg-white">
             <div class="container">
-                <a class="navbar-brand" href="#">inkwellly</a>
+                <a class="navbar-brand" href="#"><img src="public\images\inkwellly.png" alt="logo"></a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
@@ -48,12 +48,11 @@
 
     <?= $content ?>
 
-
     <footer class="border-top bg-secondary mb-0">
         <div class="container py-5">
             <div class="row gy-4 align-items-center mb-0">
                 <div class="col-12 col-md-4">
-                    <a class="navbar-brand" href="#">inkwellly</a>
+                    <a class="navbar-brand" href="#"><img src="public\images\inkwellly.png" alt="logo"></a>
                 </div>
                 <div class="col-12 col-md-4 text-md-center">
                     <ul class="list-unstyled mb-0">
