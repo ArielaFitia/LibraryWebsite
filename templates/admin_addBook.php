@@ -11,6 +11,7 @@
 <section class="my-5">
     <div class="container">
         <div class="row justify-content-evenly">
+            <h2 class="pb-3 text-center">Ajout de livre</h2>
             <div class="col-12">
                 <form method="POST" action="index.php?action=admin_addBook" enctype="multipart/form-data">
                     <div class="mb-3">
