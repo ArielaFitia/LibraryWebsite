@@ -13,7 +13,7 @@
 <?php if (isset($books) && !empty($books)) { ?>
     <section class="my-5">
         <div class="container">
-            <div class="row row-cols">
+            <div class="row justify-content-evenly">
                 <h2 class="pb-3 text-center">Résultats de la recherche</h2>
                 <?php foreach ($books as $book) { ?>
                     <div class="col-3 py-3">
@@ -55,7 +55,7 @@
                                     </div>
                                     <div class="modal-footer">
                                         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fermer</button>
-                                        <button type="submit" class="btn btn-primary">Sauvergarder</button>
+                                        <button type="submit" class="btn btn-primary">Sauvegarder</button>
                                     </div>
                                     </form>
                                 </div>
