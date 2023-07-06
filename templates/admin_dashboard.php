@@ -3,6 +3,7 @@
 <?php ob_start(); ?>
 
 <main>
+    <h2 class="py-3 text-center">Tableau de bord des bibliothécaires</h2>
     <section class="my-5">
         <div class="container">
             <div class="row justify-content-evenly">
