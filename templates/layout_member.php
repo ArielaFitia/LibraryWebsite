@@ -5,14 +5,14 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title><?= $title ?></title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
+    <link rel="stylesheet" href="css/style.css" />
 </head>
 
 <body>
     <header class="py-4">
         <nav class="navbar navbar-expand-md fixed-top navbar-light bg-white">
             <div class="container">
-                <button class="btn" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasScrolling" aria-controls="offcanvasScrolling"><img src="public\images\more.png" alt="plus"></button>
+                <button class="btn me-2" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasScrolling" aria-controls="offcanvasScrolling"><img src="public\images\more.png" alt="plus"></button>
 
                 <a class="navbar-brand" href="#"><img src="public\images\inkwellly.png" alt="logo"></a>
                 <div class="collapse navbar-collapse justify-content-center" id="navbarSupportedContent">

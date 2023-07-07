@@ -3,13 +3,13 @@
 <?php ob_start(); ?>
 <main>
     <section class="my-5">
-        <div class="container bg-primary ">
+        <div class="container bg-primary rounded-5">
             <div class="row">
                 <div class="col-6 align-self-center">
                     <h1>Inkwell <br> Library</h1>
                     <h3>Inkwell Library est une bibliothèque où l'écriture et la créativité prennent vie.
                         Trouvez ! empruntez ! lisez !</h3>
-                    <div class="pt-3"><a class="btn bg-secondary" href="#" role="button">En savoir plus</a></div>
+                    <div class="pt-3"><a class="btn bg-secondary" href="#rejoindre" role="button">Rejoignez-nous</a></div>
                 </div>
                 <div class="col-6">
                     <img src="public\images\reading_time.png" alt="illustration lecture" width="100%">
@@ -32,25 +32,25 @@
         </div>
     </section>
     <section id="services" class="py-5">
-        <div class="container bg-primary py-5">
+        <div class="container bg-primary py-5 rounded-5">
             <div class="row justify-content-evenly">
                 <h2 class="pb-4 text-center">Nos services</h2>
-                <div class="col-3 py-4 px-3 bg-primary-subtle">
+                <div class="col-3 py-4 px-3 bg-primary-subtle rounded-4">
                     <h3 class="text-center">Services</h3>
                     <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec a odio euismod urna pellentesque mattis non et erat. Nulla facilisi. Nam enim neque, euismod euismod accumsan nec, tristique id lacus.</p>
                 </div>
-                <div class="col-3 py-4 px-3 bg-primary-subtle">
+                <div class="col-3 py-4 px-3 bg-primary-subtle rounded-4">
                     <h3 class="text-center">Services</h3>
                     <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec a odio euismod urna pellentesque mattis non et erat. Nulla facilisi. Nam enim neque, euismod euismod accumsan nec, tristique id lacus.</p>
                 </div>
-                <div class="col-3 py-4 px-3 bg-primary-subtle">
+                <div class="col-3 py-4 px-3 bg-primary-subtle rounded-4">
                     <h3 class="text-center">Services</h3>
                     <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec a odio euismod urna pellentesque mattis non et erat. Nulla facilisi. Nam enim neque, euismod euismod accumsan nec, tristique id lacus.</p>
                 </div>
             </div>
         </div>
     </section>
-    <section class="py-5">
+    <section id="rejoindre" class="py-5">
         <div class="container">
             <div class="row">
                 <h2 class="pb-5 text-center">Comment ça marche ?</h2>

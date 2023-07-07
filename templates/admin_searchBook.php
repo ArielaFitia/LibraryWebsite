@@ -6,7 +6,7 @@
     <div class="container-fluid">
         <form method="POST" action="index.php?action=admin_searchBook" class="d-flex text-center" role="search">
             <input class="form-control me-2" name="search_query" type="search" placeholder="Rechercher par un titre ou un auteur" aria-label="Search">
-            <button class="btn btn-outline-success" type="submit">Rechercher</button>
+            <button class="btn btn-outline-primary" type="submit">Rechercher</button>
         </form>
     </div>
 </section>

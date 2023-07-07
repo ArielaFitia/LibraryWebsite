@@ -13,7 +13,7 @@
         <a class="mb-3 btn btn-secondary" href="index.php?action=member_dashboard" role="button">Retour</a>
         <form method="POST" action="index.php?action=member_search" class="d-flex text-center" role="search">
             <input class="form-control me-2" name="search_query" type="search" placeholder="Rechercher par titre ou auteur" aria-label="Search">
-            <button class="btn btn-outline-success" type="submit">Rechercher</button>
+            <button class="btn btn-outline-primary" type="submit">Rechercher</button>
         </form>
     </div>
 </section>

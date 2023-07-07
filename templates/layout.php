@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title><?= $title ?></title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
+    <link rel="stylesheet" href="css/style.css" />
 </head>
 
 <body>
@@ -39,7 +39,7 @@
                 </ul>
                 <form class="justify-content-end">
                     <a href="index.php?action=login" target="_blank">
-                        <button class="btn btn-outline-success me-2" type="button">Se connecter</button>
+                        <button class="btn btn-outline-primary me-2" type="button">Se connecter</button>
                     </a>
                 </form>
             </div>
