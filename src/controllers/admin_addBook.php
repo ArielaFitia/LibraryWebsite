@@ -7,7 +7,6 @@ function admin_addBook()
 {
     $confirmationMessage = '';
 
-    // Créez une instance de BookRepository
     $bookRepository = new BookRepository(new DatabaseConnection());
 
     if ($_SERVER['REQUEST_METHOD'] === 'POST') {
@@ -17,7 +16,6 @@ function admin_addBook()
         $availability = $_POST['availability'];
         $coverImage = $_FILES['cover_image'];
 
-        // Utilisez la méthode addBook du repository pour ajouter un livre
         $bookRepository->addBook($title, $author, $synopsis, $availability, $coverImage);
 
         $confirmationMessage = 'Le livre a été ajouté avec succès.';

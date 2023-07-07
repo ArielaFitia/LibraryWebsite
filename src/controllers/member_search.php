@@ -31,7 +31,6 @@ function member_search()
 
             $loanRepository->createLoan($userId, $bookId);
 
-            // Message de confirmation
             $confirmationMessage = 'L\'emprunt est en attente de confirmation, veuillez vous rendre à notre établissement.';
         } elseif (isset($_POST['suggestion_book_id'], $_POST['suggestion_message'])) {
             $bookId = $_POST['suggestion_book_id'];
@@ -40,7 +39,6 @@ function member_search()
 
             $suggestionRepository->createSuggestion($suggestionMessage, $userId, $bookId);
 
-            // Message de confirmation
             $confirmationMessage = 'Votre suggestion a été envoyée avec succès.';
         }
     }

@@ -28,7 +28,6 @@ function member_dashboard()
 
             $loanRepository->createLoan($userId, $bookId);
 
-            // Message de confirmation
             $confirmationMessage = 'L\'emprunt est en attente de confirmation, veuillez vous rendre à notre établissement.';
         } elseif (isset($_POST['suggestion_book_id'], $_POST['suggestion_message'])) {
             $bookId = $_POST['suggestion_book_id'];
@@ -37,15 +36,12 @@ function member_dashboard()
 
             $suggestionRepository->createSuggestion($suggestionMessage, $userId, $bookId);
 
-            // Message de confirmation
             $confirmationMessage = 'Votre suggestion a été envoyée avec succès.';
         }
     }
 
-    // Récupérer les emprunts du membre connecté
     $loans = $loanRepository->getLoan($userId);
 
-    // Récupérer les informations de cotisation du membre connecté
     $contribution = $contributionRepository->getContribution($userId);
 
     require('templates/member_dashboard.php');

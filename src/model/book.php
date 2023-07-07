@@ -85,13 +85,8 @@ class BookRepository
 
     public function addBook(string $title, string $author, string $synopsis, string $availability, array $coverImage): void
     {
-        // Préparation de la requête SQL pour l'insertion du livre
         $statement = $this->connection->getConnection()->prepare('INSERT INTO book (title, author, synopsis, availability, cover_image) VALUES (?, ?, ?, ?, ?)');
-
-        // Déplacement et stockage de l'image de couverture dans un dossier spécifique
         $coverImageName = $this->moveUploadedCoverImage($coverImage);
-
-        // Exécution de la requête avec les valeurs fournies
         $statement->execute([$title, $author, $synopsis, $availability, $coverImageName]);
     }
 
@@ -101,7 +96,6 @@ class BookRepository
         $coverImageName = $this->generateUniqueFileName($coverImage['name']);
         $targetPath = $uploadDirectory . $coverImageName;
 
-        // Déplacement du fichier temporaire vers l'emplacement final
         move_uploaded_file($coverImage['tmp_name'], $targetPath);
 
         return $coverImageName;

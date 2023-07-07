@@ -43,10 +43,8 @@ try {
                     $synopsis = $_POST['synopsis'];
                     $availability = $_POST['availability'];
 
-                    // Appel à une fonction du modèle pour mettre à jour le livre
                     $bookRepository->updateBook($identifier, $title, $author, $synopsis, $availability);
 
-                    // Redirection vers la page admin_books pour afficher les livres mis à jour
                     header('Location: index.php?action=admin_books');
                     exit;
                 }
@@ -73,11 +71,9 @@ try {
 
                 $userRepository->updateMember($memberId, $password, $paymentDate, $expirationDate, $paymentOption);
 
-                // Redirection vers la page d'administration des membres
                 header('Location: index.php?action=admin_members');
                 exit();
             } else {
-                // Affichage d'un message d'erreur si les données sont incomplètes
                 throw new Exception('Erreur : Veuillez fournir toutes les informations nécessaires pour la mise à jour du membre.');
             }
         } elseif ($_GET['action'] === 'delete_member' && isset($_GET['member_id'])) {
