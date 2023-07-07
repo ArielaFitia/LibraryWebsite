@@ -19,7 +19,7 @@
                         </div>
                         <div class="offcanvas-body small">
                             <div class="row">
-                                <div class="col-4"><img src="cover_images/<?= $book->cover_image ?>" alt="couverture livre"></div>
+                                <div class="col-4 text-center"><img src="cover_images/<?= $book->cover_image ?>" alt="couverture livre"></div>
                                 <div class="col-4">
                                     <h3><?= $book->title ?></h3>
                                     <h5>écrit par</h5>

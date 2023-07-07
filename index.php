@@ -117,6 +117,9 @@ try {
     } else {
         homepage();
     }
-} catch (Exception $e) { // S'il y a eu une erreur, alors...
-    echo 'Erreur : ' . $e->getMessage();
+} catch (Exception $e) {
+
+    $errorMessage = $e->getMessage();
+
+    require('templates/error.php');
 }
