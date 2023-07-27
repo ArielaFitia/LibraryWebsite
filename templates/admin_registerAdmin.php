@@ -18,7 +18,7 @@
         <section class="my-5">
             <div class="container">
                 <div class="row justify-content-evenly">
-                    <div class=" col-6">
+                    <div class="col-12 col-md-6 py-3 py-md-0">
                         <form method="POST" action="index.php?action=registerAdmin">
                             <div class="form-floating mb-3">
                                 <input name="fullname" type="text" class="form-control" id="floatingInput1" placeholder="nom complet" required>
@@ -35,7 +35,7 @@
                             <button type="submit" class="btn btn-primary">Inscrire</button>
                         </form>
                     </div>
-                    <div class="col-6">
+                    <div class="col-12 col-md-6 py-3 py-md-0">
                         <img src="public\images\sign_up.svg" alt="sign_up" width="100%">
                     </div>
                 </div>

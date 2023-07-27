@@ -24,7 +24,7 @@
             <div class="row justify-content-evenly">
                 <h2 class="pb-5 text-center">Les livres ajoutés récemment</h2>
                 <?php foreach ($books as $book) { ?>
-                    <div class="col-3">
+                    <div class="col-12 col-md-3 py-4 py-md-3">
                         <img src="cover_images/<?= $book->cover_image ?>" alt="couverture du livre" width="100%">
                         <h3 class="text-center py-3"><?= $book->title ?></h3>
                         <button class="btn bg-secondary" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasBottom<?= $book->id ?>" aria-controls="offcanvasBottom<?= $book->id ?>">A propos du livre</button><br>
@@ -45,9 +45,9 @@
                                 <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
                             </div>
                             <div class="offcanvas-body small">
-                                <div class="row">
-                                    <div class="col-4 text-center"><img src="cover_images/<?= $book->cover_image ?>" alt="couverture livre"></div>
-                                    <div class="col-4">
+                                <div class="row py-4 py-md-0">
+                                    <div class="col-12 col-md-4 text-center"><img src="cover_images/<?= $book->cover_image ?>" alt="couverture livre"></div>
+                                    <div class="col-12 col-md-4">
                                         <h3><?= $book->title ?></h3>
                                         <h5>écrit par</h5>
                                         <h3><?= $book->author ?></h3>
@@ -74,7 +74,7 @@
     <section class="py-5">
         <div class="container">
             <div class="row justify-content-evenly">
-                <div class="col-6">
+                <div class="col-12 col-md-6 py-3 py-md-0">
                     <h3 class="pb-3 text-center">Mes emprunts</h3>
                     <table class="table table-hover">
                         <thead>
@@ -97,7 +97,7 @@
                         </tbody>
                     </table>
                 </div>
-                <div class="col-6">
+                <div class="col-12 col-md-6 py-3 py-md-0">
                     <h3 class="pb-3 text-center">Mes cotisations</h3>
                     <table class="table table-hover">
                         <thead>

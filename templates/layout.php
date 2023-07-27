@@ -57,22 +57,49 @@
                 <div class="col-12 col-md-4 text-md-center">
                     <ul class="list-unstyled mb-0">
                         <li>
-                            <a href="#" class="text-decoration-none text-dark">Mentions légales</a>
+                            <a href="#" class="text-decoration-none text-dark" data-bs-toggle="modal" data-bs-target="#mentionsLegales">Mentions légales</a>
                         </li>
                     </ul>
                 </div>
                 <div class="col-12 col-md-4 text-md-end">
                     <ul class="list-inline mb-0">
                         <li class="list-inline-item">
-                            <a href="#"><img src="public\images\facebook-1.png" alt="facebook"></a>
+                            <a href="https://fr-fr.facebook.com/" target="_blank"><img src="public\images\facebook-1.png" alt="facebook"></a>
                         </li>
                         <li class="list-inline-item">
-                            <a href="#"><img src="public\images\instagram-1.png" alt="instagram"></a>
+                            <a href="https://www.instagram.com/" target="_blank"><img src="public\images\instagram-1.png" alt="instagram"></a>
                         </li>
                         <li class="list-inline-item">
-                            <a href="#"><img src="public\images\twitter-1.png" alt="twitter"></a>
+                            <a href="https://twitter.com/?lang=fr" target="_blank"><img src="public\images\twitter-1.png" alt="twitter"></a>
                         </li>
                     </ul>
+                </div>
+            </div>
+
+            <div class="modal fade" id="mentionsLegales" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title">Mentions Légales</h5>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body">
+                            <p>
+                                Ce site étant conçu initialement dans le but de respecter et de suivre les conformes demandées pour le projet NFA021.
+                                Toutefois je prendrai la liberté de poursuivre sa conception en rajoutant des nouvelles fonctionnalités,
+                                dans l'objectif de toujours m'améliorer et de pouvoir montrer sa finalité parmis mes projets.
+                            </p>
+                            <p>
+                                Je suis ouvert à vos suggestions et contributions.
+                            <h3 class="fw-bold">Contactez-moi :</h3>
+                            Email: <span class="text-secondary">arielafitiajoharini@gmail.com</span><br>
+                            Github (pour contribuer à ce projet): <a href="https://github.com/ArielaFitia" target="_blank" class="text-secondary">ArielaFitia</a>
+                            </p>
+                            <p>
+                                © Copyright by <span class="text-primary fw-bold">@Ariela Fitia</span>
+                            </p>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>

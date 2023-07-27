@@ -19,7 +19,7 @@
         <section class="my-5">
             <div class="container">
                 <div class="row justify-content-evenly">
-                    <div class=" col-6">
+                    <div class="col-12 col-md-6 py-3 py-md-0">
                         <form method="POST" action="index.php?action=login">
                             <div class="form-floating mb-3">
                                 <input name="id" type="text" class="form-control" id="floatingInput" placeholder="entrez votre identifiant" required>
@@ -40,7 +40,7 @@
                             <button type="submit" class="btn btn-primary">Connexion</button>
                         </form>
                     </div>
-                    <div class="col-4">
+                    <div class="col-12 col-md-4 py-3 py-md-0 text-center">
                         <img src="public\images\authentification.svg" alt="login" width="70%">
                     </div>
                 </div>
