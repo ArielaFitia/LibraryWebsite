@@ -1,4 +1,4 @@
-<?php $title = 'Admin_dashboard'; ?>
+<?php $title = 'Bibliothecaire - Tableau de bord'; ?>
 
 <?php ob_start(); ?>
 

@@ -1,4 +1,4 @@
-<?php $title = 'Accueil - Recherche de Livre' ?>
+<?php $title = 'Membre - Recherche de Livre' ?>
 
 <?php ob_start(); ?>
 

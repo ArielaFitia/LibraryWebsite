@@ -96,7 +96,7 @@
                             Github (pour contribuer à ce projet): <a href="https://github.com/ArielaFitia" target="_blank" class="text-secondary">ArielaFitia</a>
                             </p>
                             <p>
-                                © Copyright by <span class="text-primary fw-bold">@Ariela Fitia</span>
+                                © Copyright @ 2023 by <span class="text-primary fw-bold">Ariela Fitia</span>
                             </p>
                         </div>
                     </div>

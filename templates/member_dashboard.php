@@ -1,4 +1,4 @@
-<?php $title = 'Member_dashboard'; ?>
+<?php $title = 'Membre - Tableau de bord'; ?>
 
 <?php ob_start(); ?>
 
@@ -11,10 +11,10 @@
 <main>
     <section class="my-5">
         <div class="container">
-            <h1 class="pb-2 text-center text-secondary">"Books are a uniquely portable magic." - Stephen King</h1>
+            <h1 class="pb-5 text-center text-secondary">"Books are a uniquely portable magic." - Stephen King</h1>
             <div class="row justify-content-evenly">
                 <div class="col-12 text-center">
-                    <img src="public\images\croods-peaceful-place.png" alt="peace" width="30%">
+                    <img src="public\images\stars.svg" alt="peace" width="35%">
                 </div>
             </div>
         </div>

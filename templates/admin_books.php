@@ -1,4 +1,4 @@
-<?php $title = 'admin_books' ?>
+<?php $title = 'Bibliothecaire - livres' ?>
 
 <?php ob_start(); ?>
 

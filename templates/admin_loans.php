@@ -1,4 +1,4 @@
-<?php $title = 'admin_loans' ?>
+<?php $title = 'Bibliothecaire - emprunts' ?>
 
 <?php ob_start(); ?>
 

@@ -1,4 +1,4 @@
-<?php $title = 'admin_members' ?>
+<?php $title = 'Bibliothecaire - les membres' ?>
 
 <?php ob_start(); ?>
 

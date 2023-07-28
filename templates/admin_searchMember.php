@@ -1,4 +1,4 @@
-<?php $title = 'Admin - Recherche de membre' ?>
+<?php $title = 'Bibliothecaire - Recherche de membre' ?>
 
 <?php ob_start(); ?>
 

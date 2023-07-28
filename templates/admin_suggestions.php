@@ -1,4 +1,4 @@
-<?php $title = 'Admin - Suggestions'; ?>
+<?php $title = 'Bibliothecaire - Suggestions'; ?>
 
 <?php ob_start(); ?>
 

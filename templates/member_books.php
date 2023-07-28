@@ -1,4 +1,4 @@
-<?php $title = 'Member_books'; ?>
+<?php $title = 'Membre - Livres'; ?>
 
 <?php ob_start(); ?>
 
