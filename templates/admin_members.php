@@ -10,7 +10,6 @@
                 <th scope="col">ID</th>
                 <th scope="col">Nom complet</th>
                 <th scope="col">Email</th>
-                <th scope="col">Mot de passe</th>
                 <th scope="col">Date de paiement</th>
                 <th scope="col">Date d'expiration</th>
                 <th scope="col">Option actuelle</th>
@@ -24,7 +23,6 @@
                     <th scope="row"><?= $member['id'] ?></th>
                     <td><?= $member['fullname'] ?></td>
                     <td><?= $member['email'] ?></td>
-                    <td><?= $member['password'] ?></td>
                     <td><?= $member['payment_date'] ?></td>
                     <td><?= $member['expiration_date'] ?></td>
                     <td><?= $member['payment_option'] ?></td>

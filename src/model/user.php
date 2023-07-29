@@ -22,7 +22,7 @@ class UserRepository
 
     public function getMembers(): array
     {
-        $statement = $this->connection->getConnection()->prepare("SELECT u.id, u.fullname, u.email, u.password, c.payment_date, c.expiration_date, c.payment_option FROM `user` AS u LEFT JOIN contribution AS c ON u.id = c.user_id WHERE u.status = 'membre'");
+        $statement = $this->connection->getConnection()->prepare("SELECT u.id, u.fullname, u.email, c.payment_date, c.expiration_date, c.payment_option FROM `user` AS u LEFT JOIN contribution AS c ON u.id = c.user_id WHERE u.status = 'membre'");
         $statement->execute();
 
         $members = [];
@@ -31,7 +31,6 @@ class UserRepository
                 'id' => $row['id'],
                 'fullname' => $row['fullname'],
                 'email' => $row['email'],
-                'password' => $row['password'],
                 'payment_date' => $row['payment_date'],
                 'expiration_date' => $row['expiration_date'],
                 'payment_option' => $row['payment_option']
@@ -61,10 +60,12 @@ class UserRepository
         return $members;
     }
 
-    public function updateMember(string $memberId, string $password, string $paymentDate, string $expirationDate, string $paymentOption): void
+    public function updateMember(string $memberId, string $newPassword, string $paymentDate, string $expirationDate, string $paymentOption): void
     {
+        $hashedPassword = password_hash($newPassword, PASSWORD_BCRYPT);
+
         $statement = $this->connection->getConnection()->prepare("UPDATE `user` SET password = :password WHERE id = :memberId");
-        $statement->bindParam(':password', $password);
+        $statement->bindParam(':password', $hashedPassword);
         $statement->bindParam(':memberId', $memberId);
         $statement->execute();
 
@@ -82,12 +83,15 @@ class UserRepository
             $fullname = $_POST['fullname'];
             $email = $_POST['email'];
             $password = $_POST['password'];
+
+            $hashedPassword = password_hash($password, PASSWORD_BCRYPT);
+
             $payment_date = $_POST['payment_date'];
             $expiration_date = $_POST['expiration_date'];
             $payment_option = $_POST['payment_option'];
 
             $statement = $this->connection->getConnection()->prepare('INSERT INTO user (fullname, email, password, status) VALUES (?, ?, ?, ?)');
-            $statement->execute([$fullname, $email, $password, 'membre']);
+            $statement->execute([$fullname, $email, $hashedPassword, 'membre']);
 
             $user_id = $this->connection->getConnection()->lastInsertId();
 
@@ -105,8 +109,10 @@ class UserRepository
             $email = $_POST['email'];
             $password = $_POST['password'];
 
+            $hashedPassword = password_hash($password, PASSWORD_BCRYPT);
+
             $statement = $this->connection->getConnection()->prepare('INSERT INTO user (fullname, email, password, status) VALUES (?, ?, ?, ?)');
-            $statement->execute([$fullname, $email, $password, 'admin']);
+            $statement->execute([$fullname, $email, $hashedPassword, 'admin']);
 
             echo "Inscription réussie !";
         }
@@ -119,11 +125,11 @@ class UserRepository
             $password = $_POST['password'];
             $status = $_POST['status'];
 
-            $statement = $this->connection->getConnection()->prepare("SELECT * FROM user WHERE id = :id AND password = :password AND status = :status");
-            $statement->execute(['id' => $id, 'password' => $password, 'status' => $status]);
+            $statement = $this->connection->getConnection()->prepare("SELECT * FROM user WHERE id = :id AND status = :status");
+            $statement->execute(['id' => $id, 'status' => $status]);
             $user = $statement->fetch();
 
-            if ($user) {
+            if ($user && password_verify($password, $user['password'])) {
                 if ($status === 'membre') {
                     $_SESSION['user_id'] = $user['id'];
                     $_SESSION['fullname'] = $user['fullname'];
