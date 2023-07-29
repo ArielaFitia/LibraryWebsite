@@ -59,7 +59,7 @@
                                             <input type="date" class="form-control" id="recipient-name2" name="return_date" value="<?= $loan['return_date'] ?>">
                                         </div>
                                         <div class="mb-3">
-                                            <label for="loan_status" class="form-label">Option de paiement</label>
+                                            <label for="loan_status" class="form-label">Statut</label>
                                             <select name="loan_status" class="form-select">
                                                 <option value="En attente" <?= ($loan['loan_status'] == 'En attente') ? 'selected' : '' ?>>En attente</option>
                                                 <option value="En cours" <?= ($loan['loan_status'] == 'En cours') ? 'selected' : '' ?>>En cours</option>
